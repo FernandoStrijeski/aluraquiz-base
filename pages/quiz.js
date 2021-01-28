@@ -64,7 +64,7 @@ export default function QuizPage() {
         </Widget>
         <Footer />
       </QuizContainer>
-      <GitHubCorner projectUrl="https://github.com/Strijeski" />
+      <GitHubCorner projectUrl="https://github.com/FernandoStrijeski" />
     </QuizBackGround>
   );
 }
