@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import db from '../db.json';
 import QuizContainer from '../src/components/QuizContainer';
 import Widget from '../src/components/Widget';
