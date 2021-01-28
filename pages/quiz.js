@@ -8,12 +8,6 @@ import QuizBackGround from '../src/components/QuizBackGround';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 
-// const BackgroundImage = styled.div`
-//   background-image: url(${db.bg});
-//   flex: 1;
-//   background-size: cover;
-//   background-position: center;
-// `;
 
 export const QuizContainer = styled.div`
   width: 100%;
@@ -26,7 +20,7 @@ export const QuizContainer = styled.div`
   } 
 `;
 
-export default function Home() {
+export default function QuizPage() {
   const router = useRouter();
   const [name, setName] = React.useState('');
   console.log('retorno do useState', setName);
@@ -55,9 +49,10 @@ export default function Home() {
       <QuizContainer>
         <Widget>
           <Widget.Header>
-            <h1>Tipo de Programador</h1>
+            <h1>Pergunta 1 de 5</h1>
           </Widget.Header>
           <Widget.Content>
+            <Widget.Content.Image backgroundImage={db.bg} />
             <form onSubmit={function (event) {
               event.preventDefault();
               router.push(`/quiz?name=${name}`);
