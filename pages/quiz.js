@@ -8,7 +8,6 @@ import QuizBackGround from '../src/components/QuizBackGround';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 
-
 export const QuizContainer = styled.div`
   width: 100%;
   max-width: 350px;

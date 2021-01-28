@@ -50,11 +50,21 @@ padding: 0;
 `;
 
 Widget.Content.Image = styled.div`
-  position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 46.3%;
-  bottom: -357.41%;
+width: 100%;
+background-size: cover;
+background-position: center;
+height: 222px;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+padding: 18px 32px;
+background-image: url(${({ backgroundImage }) => backgroundImage});
+background-color: ${({ theme }) => theme.colors.primary};
+
+* {
+  margin: 0;
+}
 `;
+
 
 export default Widget;
