@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   #__next {
     flex: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
   }
 `
 
