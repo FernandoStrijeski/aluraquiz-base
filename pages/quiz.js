@@ -52,34 +52,15 @@ export default function QuizPage() {
             <h1>Pergunta 1 de 5</h1>
           </Widget.Header>
           <Widget.Content>
-            <Widget.Content.Image backgroundImage={db.bg} />
-            <form onSubmit={function (event) {
-              event.preventDefault();
-              router.push(`/quiz?name=${name}`);
-              console.log('Fazendo uma submissão por meio do react');
-            }}
-            >
-              <input
-                onChange={function (info) {
-                  console.log(info.target.value);
-                  // State
-                  setName(` ${info.target.value}`);
-                }}
-                placeholder="Informe seu nome"
-              />
-              <button type="submit" disabled={name.length === 1}>
-                Jogar
-                {name}
-              </button>
-            </form>
+            <Widget.Content.Image backgroundImage={db.questions[0].image} />
+            <h1>{db.questions[0].title}</h1>
+            <p>{db.questions[0].description}</p>
           </Widget.Content>
-        </Widget>
-        <Widget>
-          <Widget.Header>
-            <h1>Em busca de auto conhecimento</h1>
-          </Widget.Header>
           <Widget.Content>
-            <p>teasda</p>
+            <h1>{db.questions[0].alternatives[0]}</h1>
+            <h1>{db.questions[0].alternatives[1]}</h1>
+            <h1>{db.questions[0].alternatives[2]}</h1>
+            <h1>{db.questions[0].alternatives[3]}</h1>
           </Widget.Content>
         </Widget>
         <Footer />
