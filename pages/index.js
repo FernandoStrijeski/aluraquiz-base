@@ -21,7 +21,7 @@ export default function Home() {
         <title>Alura Quiz = Modelo Base</title>
         <meta name="title" content="Alura Quiz = Modelo Base" />
         <meta name="description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!" />
-
+        <link rel="shortcut icon" href="/a.png" />
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://github.com/FernandoStrijeski/aluraquiz-base" />

@@ -10,14 +10,35 @@ import GitHubCorner from '../src/components/GitHubCorner';
 import QuizLogo from '../src/components/QuizLogo';
 import Button from '../src/components/Button';
 import Image from '../src/components/Image';
+import AlternativesForm from '../src/components/AlternativesForm';
 
 function QuestionWidget({
   totalQuestions,
   question,
   questionIndex,
   onSubmit,
+  addResult,
 }) {
+  const [selectedAlternative, setSelectedAlternative] = React.useState(undefined);
+  const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const questionId = `question__${questionIndex}`;
+  const isCorrect = selectedAlternative === question.answer;
+  const hasAlternativeSelected = selectedAlternative !== undefined;
+
+  const Acertoustyle = {
+    color: 'green',
+    fontFamily: 'Arial',
+    fontWeight: 'bold',
+    fontSize: '20px',
+  };
+
+  const Erroustyle = {
+    color: 'red',
+    fontFamily: 'Arial',
+    fontWeight: 'bold',
+    fontSize: '20px',
+  };
+
   return (
     <Widget>
       <Widget.Header>
@@ -28,10 +49,16 @@ function QuestionWidget({
       </Widget.Header>
       <Image src={question.image} />
       <Widget.Content>
-        <form
+        <AlternativesForm
           onSubmit={(info) => {
             info.preventDefault();
-            onSubmit();
+            setIsQuestionSubmited(true);
+            setTimeout(() => {
+              addResult(isCorrect); // alimenta o array de resultados
+              onSubmit();
+              setIsQuestionSubmited(false);
+              setSelectedAlternative(undefined);
+            }, 2 * 1000);
           }}
         >
           <h2>
@@ -43,15 +70,22 @@ function QuestionWidget({
 
           {question.alternatives.map((alternative, alternativeIndex) => {
             const alternativeId = `alternative__${alternativeIndex}`;
+            const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
+            const isSelected = selectedAlternative === alternativeIndex;
+
             return (
               <Widget.Topic
                 as="label"
+                key={alternativeId}
                 htmlFor={alternativeId}
+                data-selected={isSelected}
+                data-status={isQuestionSubmited && alternativeStatus}
               >
                 <input
-                  // style={{ display: 'none' }}
+                  style={{ display: 'none' }}
                   id={alternativeId}
                   name={questionId}
+                  onChange={() => setSelectedAlternative(alternativeIndex)}
                   type="radio"
                 />
                 {alternative}
@@ -64,10 +98,55 @@ function QuestionWidget({
             {JSON.stringify(question, null, 4)}
           </pre> */}
 
-          <Button type="submit">
+          <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
-        </form>
+          {/* exibe a questao selecionada para teste */}
+          <p>{selectedAlternative}</p>
+
+          {/* se a questao foi respondida ele verifica se ta correto ou nao */}
+          {isQuestionSubmited && isCorrect && <p style={Acertoustyle}>Aí que me refiro!</p>}
+          {isQuestionSubmited && !isCorrect && <p style={Erroustyle}>Erroooooooou!</p>}
+        </AlternativesForm>
+      </Widget.Content>
+    </Widget>
+  );
+}
+
+function ResultWidget({ results }) {
+  return (
+    <Widget>
+      <Widget.Header>
+        RESULTADO
+      </Widget.Header>
+
+      <Widget.Content>
+        <p>
+          Você acertou
+          {' '}
+          {/* usa o reduce se precisar somar pontuacoes por questao */}
+          {/*
+          {results.reduce((somatoriaAtual, resultAtual) => {
+            const isAcerto = resultAtual === true;
+            if (isAcerto) {
+              return somatoriaAtual + 1;
+            }
+            return somatoriaAtual;
+          }, 0)}
+           */}
+          {/* usa o filter se é pra pegar o nro de questoes acertadas */}
+          {results.filter((x) => x).length}
+          {' '}
+          perguntas
+        </p>
+        <ul>
+          {results.map((result, index) => (
+            <li key={`result__${result}`}>
+              {`#${index + 1}} Resultado:`}
+              {result === true ? 'Acertou' : 'Errou'}
+            </li>
+          ))}
+        </ul>
       </Widget.Content>
     </Widget>
   );
@@ -94,6 +173,7 @@ const screenStates = {
 
 export default function QuizPage() {
   const [screenState, setScreenState] = React.useState(screenStates.LOADING);
+  const [results, setResults] = React.useState([]);
   // const router = useRouter();
   // const [name, setName] = React.useState('');
   // console.log('retorno do useState', setName);
@@ -101,6 +181,13 @@ export default function QuizPage() {
   const [currentQuestion, setCurrentQuestion] = React.useState(0);
   const questionIndex = currentQuestion;
   const question = db.questions[questionIndex];
+
+  function addResult(result) {
+    setResults([
+      ...results,
+      result,
+    ]);
+  }
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -123,7 +210,7 @@ export default function QuizPage() {
         <title>Alura Quiz = Modelo Base</title>
         <meta name="title" content="Alura Quiz = Modelo Base" />
         <meta name="description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!" />
-
+        <link rel="shortcut icon" type="image/png" href="/a.png" />
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://github.com/FernandoStrijeski/aluraquiz-base" />
@@ -160,10 +247,11 @@ export default function QuizPage() {
             questionIndex={questionIndex}
             totalQuestions={totalQuestions}
             onSubmit={handleSubmitQuiz}
+            addResult={addResult}
           />
         )}
 
-        {screenState === screenStates.RESULT && <div>Você acertou X questões, parabéns!</div>}
+        {screenState === screenStates.RESULT && <ResultWidget results={results} />}
 
         <Footer />
       </QuizContainer>
