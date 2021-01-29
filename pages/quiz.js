@@ -102,7 +102,7 @@ function QuestionWidget({
             Confirmar
           </Button>
           {/* exibe a questao selecionada para teste */}
-          <p>{selectedAlternative}</p>
+          {/* <p>{selectedAlternative}</p> */}
 
           {/* se a questao foi respondida ele verifica se ta correto ou nao */}
           {isQuestionSubmited && isCorrect && <p style={Acertoustyle}>Aí que me refiro!</p>}
