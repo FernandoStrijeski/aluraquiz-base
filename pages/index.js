@@ -21,23 +21,24 @@ export default function Home() {
   return (
     <QuizBackGround backgroundImage={db.bg}>
       <Head>
-        <title>Alura Quiz = Modelo Base</title>
-        <meta name="title" content="Alura Quiz = Modelo Base" />
-        <meta name="description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!" />
-        <link rel="shortcut icon" href="/a.png" />
+        <title>StrijesQuiz - DEV ou não DEV</title>
+        <meta name="title" content="StrijesQuiz = DEV ou não DEV" />
+        <meta name="description" content="Ser programador não está apenas em criar sites e aplicações. Você se considera um DEV?" />
+
+        <link rel="shortcut icon" href={`${db.theme.favicon}`} />
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://github.com/FernandoStrijeski/aluraquiz-base" />
-        <meta property="og:title" content="Alura Quiz = Modelo Base" />
-        <meta property="og:description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!" />
-        <meta property="og:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png" />
+        <meta property="og:title" content="StrijesQuiz = DEV ou não DEV" />
+        <meta property="og:description" content="Ser programador não está apenas em criar sites e aplicações. Você se considera um DEV?" />
+        <meta property="og:image" content="https://www.dinamize.com.br/wp-content/uploads/2019/09/A-origem-do-dia-do-programador-topo.png" />
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://github.com/FernandoStrijeski/aluraquiz-base" />
-        <meta property="twitter:title" content="Alura Quiz = Modelo Base" />
-        <meta property="twitter:description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!" />
-        <meta property="twitter:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png" />
+        <meta property="twitter:title" content="StrijesQuiz = DEV ou não DEV" />
+        <meta property="twitter:description" content="Ser programador não está apenas em criar sites e aplicações. Você se considera um DEV?" />
+        <meta property="twitter:image" content="https://www.dinamize.com.br/wp-content/uploads/2019/09/A-origem-do-dia-do-programador-topo.png" />
       </Head>
       <QuizContainer>
         <QuizLogo />
@@ -51,9 +52,11 @@ export default function Home() {
           animate="show"
         >
           <Widget.Header>
-            <h1>Tipo de Programador</h1>
+            <h1>E ai - DEV ou não DEV?</h1>
           </Widget.Header>
           <Widget.Content>
+            <h2>Descubra agora se você tem a alma de um desenvolvedor. Bora começar?</h2>
+            <br />
             <form onSubmit={function (event) {
               event.preventDefault();
               router.push(`/quiz?name=${name}`);
