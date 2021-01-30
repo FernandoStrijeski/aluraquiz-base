@@ -9,7 +9,10 @@
     "lint": "eslint ./ --fix"
   },
   "dependencies": {
+    "@crello/react-lottie": "^0.0.11",
     "@material-ui/core": "^4.11.3",
+    "framer-motion": "^3.2.2-rc.1",
+    "lottie-web": "^5.7.6",
     "next": "latest",
     "prop-types": "^15.7.2",
     "react": "^16.8.0",

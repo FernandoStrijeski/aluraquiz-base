@@ -22,12 +22,38 @@
         "answer": 1,
         "alternatives": [
            "Para tudo e aguarda o google voltar",
-           "Segue codando com mais fúria"
+           "Segue codando sem ver que a internet caiu",
+           "Corre com o dinossauro até reestabelecer a conexão"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/BLxD16sKQcuGwtBLRI/giphy.gif",
+        "title": "Qual a definição de GAMBIARRA?",
+        "description": "Algo tão utilizado quanto andar para a frente",
+        "answer": 1,
+        "alternatives": [
+           "Método utilizado quando não está com preguiça de codar",
+           "Grande Artifício da Mecânica Brasileira Inventada para Arrumar, Recuperar ou Realizar Algo",
+           "Ferramenta utilizada com um martelo"
+        ]
+      },
+      {
+        "image": "https://confluence.jetbrains.com/download/attachments/56689839/auto_indent.gif?version=1&modificationDate=1413600169000&api=v2",
+        "title": "Quantos espaços deve possuir a indentação do código?",
+        "description": "Importante para uns, para outros nem tanto",
+        "answer": 2,
+        "alternatives": [
+           "2 espaços",
+           "4 espaços",
+           "Sei la, mete um indentar automático e já era",
+           "O que é indentar?"
         ]
       }
     ],
     "external": [
-      ""
+      "https://pato-quiz-nextjs.theedouglasam.vercel.app/",
+      "https://aluraquiz-coffee.leonardot07.vercel.app/",
+      "https://quiz-react.brenoha.vercel.app/"
     ],
     "theme": {
       "colors": {
