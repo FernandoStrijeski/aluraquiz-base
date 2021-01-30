@@ -29,14 +29,14 @@ export default function Home() {
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://github.com/FernandoStrijeski/aluraquiz-base" />
-        <meta property="og:title" content="StrijesQuiz = DEV ou não DEV" />
+        <meta property="og:title" content="StrijesQuiz - DEV ou não DEV" />
         <meta property="og:description" content="Ser programador não está apenas em criar sites e aplicações. Você se considera um DEV?" />
         <meta property="og:image" content="https://www.dinamize.com.br/wp-content/uploads/2019/09/A-origem-do-dia-do-programador-topo.png" />
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://github.com/FernandoStrijeski/aluraquiz-base" />
-        <meta property="twitter:title" content="StrijesQuiz = DEV ou não DEV" />
+        <meta property="twitter:title" content="StrijesQuiz - DEV ou não DEV" />
         <meta property="twitter:description" content="Ser programador não está apenas em criar sites e aplicações. Você se considera um DEV?" />
         <meta property="twitter:image" content="https://www.dinamize.com.br/wp-content/uploads/2019/09/A-origem-do-dia-do-programador-topo.png" />
       </Head>
